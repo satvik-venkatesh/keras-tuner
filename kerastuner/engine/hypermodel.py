@@ -126,8 +126,8 @@ class KerasHyperModel(HyperModel):
                 if i == self._max_fail_streak:
                     raise RuntimeError(
                         'Too many consecutive oversized models.')
-                continue
-            break
+                    continue
+                break
 
         return self._compile_model(model)
 
