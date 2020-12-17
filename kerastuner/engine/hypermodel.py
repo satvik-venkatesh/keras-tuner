@@ -26,6 +26,8 @@ from tensorflow import keras
 
 from .. import config as config_module
 
+import kerastuner as kt
+
 
 class HyperModel(object):
     """Defines a searchable space of Models and builds Models from this space.
@@ -126,8 +128,9 @@ class KerasHyperModel(HyperModel):
                 if i == self._max_fail_streak:
                     raise RuntimeError(
                         'Too many consecutive oversized models.')
-                    continue
-                break
+                continue
+                hp = kt.HyperParameters()
+            break
 
         return self._compile_model(model)
 
